@@ -1,78 +1,26 @@
-#include <stdio.h>
-#include <string.h>
+#include <iostream>
+using namespace std;
 
-int stack[10000];
-
-int main() {
-
-	int N, i, j, num, top = 0;
-
-	scanf("%d", &N);
-
-	for (i = 0; i < N; i++) {
-
-		char cmd[BUFSIZ];
-
-		scanf("%s", cmd);
-
-		if (strcmp(cmd, "push") == 0) {
-
-			scanf("%d", &num);
-
-			stack[top] = num;
-
-			top++;
-
-		}
-
-		if (strcmp(cmd, "pop") == 0) {
-
-			if (top <= 0)
-
-				printf("-1\n");
-
-			else {
-
-				printf("%d\n", stack[top - 1]);
-
-				top--;
-
-			}
-
-		}
-
-		if (strcmp(cmd, "size") == 0) {
-
-			printf("%d\n", top);
-
-		}
-
-		if (strcmp(cmd, "empty") == 0) {
-
-			if (top <= 0)
-
-				printf("1\n");
-
-			else
-
-				printf("0\n");
-
-		}
-
-		if (strcmp(cmd, "top") == 0) {
-
-			if (top <= 0)
-
-				printf("-1\n");
-
-			else
-
-				printf("%d\n", stack[top - 1]);
-
-		}
-
+void star(int i, int j, int n) {
+	if ((i / n) % 3 == 1 && (j / n) % 3 == 1) {
+		cout << ' ';
 	}
-
-	return 0;
-
+	else {
+		if (n / 3 == 0) {
+			cout << "*";
+		}
+		else {
+			star(i, j, n / 3);
+		}
+	}
+}
+int main() {
+	int num;
+	cin >> num;
+	for (int i = 0; i < num; i++) {
+		for (int j = 0; j < num; j++) {
+			star(i, j, num);
+		}
+		cout << "\n";
+	}
 }
