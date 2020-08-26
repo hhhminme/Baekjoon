@@ -1,19 +1,27 @@
+#define _CRT_SECURE_NO_WARNINGS 
 #include <iostream>
-using namespace std; 
-
-void hanoi(int n, int start, int to, int bypass) {
-	if (n == 1) {
-		printf("%d %d \n", start, to);
-	}
-	else {
-		hanoi(n - 1, start, bypass, to);
-		printf("%d %d\n", start, to);
-		hanoi(n - 1, bypass, to, start);
-	}
-}
+#include <cstring>
+int score[1001];
 int main() {
-	int num;
-	cin >> num;
-	cout << (1 << num) - 1 << '\n';
-	hanoi(num, 1, 3, 2);
+	int cycle; 
+	scanf(" %d", &cycle);
+	for (int i = 0; i < cycle; i++) {
+		int stu; 
+		scanf(" %d", &stu);
+		double avg = 0.0; 
+		int sum = 0;
+		for (int j = 0; j < stu; j++) {
+			scanf(" %d", &score[j]);
+			sum += score[j]; 
+		}
+		int count = 0;
+		avg = (double)sum / stu; 
+		for (int j = 0; j < stu; j++) {
+			if (avg < score[j]) {
+				count++;
+			}
+		}
+		printf("%.3f%%\n", (double)count * 100 / stu);
+	}
+	return 0; 
 }
