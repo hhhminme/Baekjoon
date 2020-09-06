@@ -1,27 +1,24 @@
-#define _CRT_SECURE_NO_WARNINGS 
 #include <iostream>
-#include <cstring>
-int score[1001];
-int main() {
-	int cycle; 
-	scanf(" %d", &cycle);
-	for (int i = 0; i < cycle; i++) {
-		int stu; 
-		scanf(" %d", &stu);
-		double avg = 0.0; 
-		int sum = 0;
-		for (int j = 0; j < stu; j++) {
-			scanf(" %d", &score[j]);
-			sum += score[j]; 
-		}
-		int count = 0;
-		avg = (double)sum / stu; 
-		for (int j = 0; j < stu; j++) {
-			if (avg < score[j]) {
-				count++;
+using namespace std; 
+int main(void) {
+	int card_num, sum;
+	int max;
+	cin >> card_num >> max;
+	int arr[101];
+	for (int i = 0; i < card_num; i++) {
+		cin >> arr[i];
+	}
+	
+	for (int i = 0; i < card_num; i++) {
+		for (int j = 0; j < card_num; j++) {
+			for (int k = 0; k < card_num; k++) {
+				sum = arr[i] + arr[j] + arr[k];
+				if (sum < max && max - sum > 0) {
+					max = sum;
+				}
 			}
 		}
-		printf("%.3f%%\n", (double)count * 100 / stu);
 	}
+	cout << max << endl;
 	return 0; 
 }
